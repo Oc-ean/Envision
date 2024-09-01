@@ -1,4 +1,5 @@
 import 'package:envision/constants/constants.dart';
+import 'package:envision/views/web/web.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,8 +8,9 @@ class WelcomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    final size = ScreenSize(context);
+    // final height = MediaQuery.of(context).size.height;
+    // final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
@@ -32,12 +34,12 @@ class WelcomeView extends StatelessWidget {
             Text(
               hi,
               style: GoogleFonts.bigShouldersDisplay(
-                  fontSize: height * 0.7,
+                  fontSize: size.height * 0.7,
                   fontWeight: FontWeight.bold,
                   color: ProjectColor.primaryColor),
             ),
             SizedBox(
-              width: width * 0.03,
+              width: size.width * 0.03,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +54,7 @@ class WelcomeView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.03,
+                  height: size.height * 0.03,
                 ),
                 Text(
                   introText.toUpperCase(),
@@ -63,7 +65,7 @@ class WelcomeView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.05,
+                  height: size.height * 0.05,
                 ),
                 ButtonTile(
                   height: 50,
@@ -72,6 +74,10 @@ class WelcomeView extends StatelessWidget {
                   borderColor: ProjectColor.primaryColor,
                   color: Colors.transparent,
                   text: enterTheSystem.toUpperCase(),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const HomeView()));
+                  },
                 ),
               ],
             ),

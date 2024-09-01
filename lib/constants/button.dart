@@ -16,6 +16,7 @@ class ButtonTile extends StatelessWidget {
   final FontWeight? fontWeight;
   final double? textSize;
   final VoidCallback? onTap;
+  final Widget? subIcon;
   final MainAxisAlignment? alignment;
 
   const ButtonTile({
@@ -33,6 +34,7 @@ class ButtonTile extends StatelessWidget {
     this.fontWeight,
     this.textSize,
     this.alignment,
+    this.subIcon,
   });
 
   @override
@@ -54,7 +56,7 @@ class ButtonTile extends StatelessWidget {
             mainAxisAlignment: alignment ?? MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: icon != null && text != null ? 0 : 0,
+                width: icon != null && text != null ? 10 : 0,
               ),
               if (icon != null) ...[
                 icon!,
@@ -69,6 +71,10 @@ class ButtonTile extends StatelessWidget {
                     color: textColor ?? ProjectColor.primaryColor,
                   ),
                 ),
+                if (subIcon != null) ...[
+                  subIcon!,
+                  SizedBox(width: text != null ? 10 : 0),
+                ],
               ]
             ],
           ),
